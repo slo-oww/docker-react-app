@@ -20,3 +20,16 @@ script:
 # 테스트 성공 후 할일
 after_success: 
   - echo "Test Success"
+
+# 배포 부분 작성
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "docker-react-app"
+  env: "Docker-react-app-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-548167664869"
+  bucket_path: "docker-react-app"
+  on:
+    branch: main
+  access_key_id: $AWS_ACCESS_KEY
+  secreat_access_key: $AWS_SECRET_ACCESS_KEY
